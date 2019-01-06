@@ -6,7 +6,7 @@ else
 	mailArg="--email $EMAIL"
 fi
 
-if [ ! -d "/sitesconf" -o ! -z "$(ls -A /sitesconf)" ]; then
+if [ ! -d "/sitesconf" -o -z "$(ls -A /sitesconf)" ]; then
 
 	if [ -z "$SERVERNAMES" ]; then 
 		echo "ERROR : No configuration server file detected nor SERVERNAMES variable"
