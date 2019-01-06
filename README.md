@@ -94,8 +94,12 @@ Moreover, i suggest you only have server files in this directory.
 
 Sadly, you need to have full text files in this directory. 
 So the symlink usage of sites-available/sites-enabled will not work (or maybe it will thanks to some obscure fonctionnality of docker ?)
+I do not have this tested on apache, only nginx. But contributions are welcome.
 
+# What do I do
+The `/.well-known/acme-challenge/` is some folder where my nginx specifically. No need of the binded directory to be named .well-known/acme-challenge. It juste need to be SERVED by that name.
 
+I use a "generic" file `server_ssl.conf` among my https servers. That's why my SSL_FLAG is that name. You can use `ssl_certificate_key` if you write it in each server file.
 
 
 
