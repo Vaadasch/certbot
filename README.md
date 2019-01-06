@@ -11,6 +11,7 @@ IE mounting /certs in a volume or a bind
 If you need to generate certificates for more servernames than one container can support, make more containers from this image !
 
 # TL;DR
+### Variables
 Optionnal :
 ```
 -e mail:exemple@domain.com
@@ -35,6 +36,7 @@ Mandatory only if using sitesconf, how to find servername in configuration files
 ```
 -e SERVER:apache|nginx					(
 ```
+### Volumes
 Directory where the new certificates are copied. Optionnal, but what the point otherwise ?
 ```
 -v /asyouwant/certs:/certs
