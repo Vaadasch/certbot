@@ -2,11 +2,11 @@
 
 This container aim to generate certificates with Let's Encrypt with easy deployment through docker structures
 
-The generated certificate will be copied in the /certs dir.
-If previous certificates files are present in this dir, it create a new directory YYYY.MM.dd to backup these files.
+The generated certificate will be copied in the `/certs` dir.
+If previous certificates files are present in this dir, it create a new directory `YYYY.MM.dd` to backup these files.
 
 The recuperation of these certificates files is at your conveinence. 
-IE mounting /certs in a volume or a bind
+IE mounting `/certs` in a volume or a bind
 
 If you need to generate certificates for more servernames than one container can support, make more containers from this image !
 
@@ -34,10 +34,10 @@ Mandatory only if using sitesconf, keyword to select the ssl protected vhosts
 ```
 Mandatory only if using sitesconf, how to find servername in configuration files
 ```
--e SERVER:apache|nginx					(
+-e SERVER:apache|nginx
 ```
 ### Volumes
-Directory where the new certificates are copied. Optionnal, but what the point otherwise ?
+Directory where the new certificates are copied. Optionnal, but what the point otherwise?
 ```
 -v /asyouwant/certs:/certs
 ```
@@ -47,33 +47,32 @@ directory where you have your servernames config files, 1 file per servername, d
 ```
 Mandatory, directory to serve the challenges
 ```
--v /path/servername/.well-known/acme-challenge:/challenge/.well-known/acme-challenge ()
+-v /path/servername/.well-known/acme-challenge:/challenge/.well-known/acme-challenge
 ```
 
 # Why that ?
-I wanted to separate the certificate generation from my minimalist nginx container. One container for nginx, one container for php, one for sql,
-why would I install certbot inside my nginx container.
+I wanted to separate the certificate generation from my minimalist nginx container. One container for nginx, one container for php, one for sql, why would I install certbot inside my nginx container?
 
-That plus the fact that I like to control it. It is said that certbot can modify itself the nginx configuration. What ? How that ? No explaination ? 
+That plus the fact that I like to control it. It is said that certbot can modify itself the nginx configuration. What? How that? No explaination? 
 Then no.
 
-I now, it's silly.
+I know, it's silly.
  
 # What's needed
 
-The directory  /challenge/.well-known/acme-challenge  need to be mounted for it need to be served by your webserver at 
+The directory `/challenge/.well-known/acme-challenge` need to be binded for it need to be served by your webserver at 
 http(s?)://example.domain.com/.well-known/acme-challenge/
 Each of your sites need to serve this directory.
 
 Either the following need to be set (more description below): 
  - SERVERNAMES variable, comma separated if multiple
- - /sitesconf volume targeting the folder with the files of yours vhosts configuration.
+ - `/sitesconf` volume targeting the folder with the files of yours vhosts configuration.
 	In this case, INSTANCE, SERVER et SSL_FLAG variables need to be set too. 
 	Hopefully, you have only one server by file. If not, you're doing it wrong.
 	
-The PERIODICITY variable need to be set. Either the "15min", "hourly", "daily", "weekly" or 
-"monthly" of the /etc/periodicity subirectory.
-It is possible to set this variable	at "SPAWN" or "CREATE" (either way) to generate the certificates at the start of the
+The PERIODICITY variable need to be set. Either the `15min`, `hourly`, `daily`, `weekly` or 
+`monthly` of the `/etc/periodicity` subirectory.
+It is possible to set this variable	at `SPAWN` or `CREATE` (either way) to generate the certificates at the start of the
 container then exit. A way to not have this container up and running all the time.
 
 If you're using Nginx, it need to be reload after certificate renewal. 
@@ -85,11 +84,11 @@ You may have other options depending on what you're doing.
 Using SERVERNAMES variable is easy. Set up with the servers names you need to generate certificate and you're on the go.
 But you'll need to update this value every new server
 
-Using the /sitesconf volume binding, the container will read the files to find :
- - if the server is set with ssl, based on the presence of the SSL_FLAG word (or line) in the file
- - the name with the "server_name" (nginx) or "ServerName" (apache) line. The selection is set with SERVER variable.
+Using the `/sitesconf` volume binding, the container will read the files to find :
+ - if the server is set with ssl, based on the presence of the `SSL_FLAG` word (or line) in the file
+ - the name with the `server_name` (nginx) or `ServerName` (apache) line. The selection is set with SERVER variable.
 
-The /sitesconf need to be binded to the directory where you put the files of your servers. No need to write, only RO so you're safe.
+The `/sitesconf` need to be binded to the directory where you put the files of your servers. No need to write, only RO so you're safe.
 You need to have only one server by file : one vhost for apache or one server block for nginx.
 Moreover, i suggest you only have server files in this directory.
 
