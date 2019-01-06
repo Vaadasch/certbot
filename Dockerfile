@@ -20,9 +20,7 @@ VOLUME /challenges/.well-known/acme-challenge
 WORKDIR /opt/certbot
 
 RUN apk update && apk --no-cache upgrade && \
-	apk add --no-cache certbot && \
-	mkdir /certs && \
-	mkdir /sitesconf
+	apk add --no-cache certbot 
 
 COPY wrap /wrap
 
