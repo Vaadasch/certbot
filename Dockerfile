@@ -23,4 +23,4 @@ RUN apk update && apk --no-cache upgrade && \
 
 COPY wrap /wrap
 
-CMD /bin/ash /wrap/run.sh
+ENTRYPOINT ["/bin/ash", "/wrap/run.sh"]
