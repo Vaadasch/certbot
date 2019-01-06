@@ -7,8 +7,7 @@ Version="1"
 
 ENV EMAIL mail@example.com
 ENV INSTANCE Exemple
-ENV DOMAIN_1 exemple.domain.com
-ENV DOMAIN_2 exemple2.domain.com
+ENV SERVERNAMES exemple.domain.com,exemple2.domain.com
 ENV PERIODICITY daily
 ENV SSL_FLAG server_ssl.conf
 ENV SERVER nginx
