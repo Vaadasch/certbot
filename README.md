@@ -11,15 +11,15 @@ IE mounting /certs in a volume or a bind
 If you need to generate certificates for more servernames than one container can support, make more containers from this image !
 
 # TL;DR
- -e mail:exemple@domain.com  								(optionnal)
- -e INSTANCE:Exemple 										(Mandatory only if using sitesconf, user readableness string)
- -e PERIODICITY:15min|hourly|daily|...|SPAWN				(Mandatory. periodicity of check, or at start)
- -e SERVERNAMES:exemple.domain.com,exemple2.domain.com		(list of the servernames, Mandatory only if sitesconf not mounted or empty)
- -e SSL_FLAG:server_ssl.conf								(Mandatory only if using sitesconf, keyword to select the ssl protected vhosts)
- -e SERVER:apache|nginx										(Mandatory only if using sitesconf, how to find servername in configuration files)
- -v /asyouwant/certs:/certs									(directory where the new certificates are copied)
- -v /sites-configuartions:/sitesconf						(directory where you have your servernames config files, 1 file per servername, do not symlink)
- -v /path/servername/.well-known/acme-challenge:/challenge/.well-known/acme-challenge (Mandatory, directory to serve the challenges)
+    -e mail:exemple@domain.com  								(optionnal)
+    -e INSTANCE:Exemple 										(Mandatory only if using sitesconf, user readableness string)
+    -e PERIODICITY:15min|hourly|daily|...|SPAWN				(Mandatory. periodicity of check, or at start)
+    -e SERVERNAMES:exemple.domain.com,exemple2.domain.com		(list of the servernames, Mandatory only if sitesconf not mounted or empty)
+    -e SSL_FLAG:server_ssl.conf								(Mandatory only if using sitesconf, keyword to select the ssl protected vhosts)
+    -e SERVER:apache|nginx										(Mandatory only if using sitesconf, how to find servername in configuration files)
+    -v /asyouwant/certs:/certs									(directory where the new certificates are copied)
+    -v /sites-configuartions:/sitesconf						(directory where you have your servernames config files, 1 file per servername, do not symlink)
+    -v /path/servername/.well-known/acme-challenge:/challenge/.well-known/acme-challenge (Mandatory, directory to serve the challenges)
 
 # Why that ?
 I wanted to separate the certificate generation from my minimalist nginx container. One container for nginx, one container for php, one for sql,
