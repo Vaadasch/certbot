@@ -4,7 +4,7 @@
 if [ -z "$EMAIL" ] ; then
 	mailArg="--register-unsafely-without-email"
 else 
-# Or use Email
+	# Or use Email
 	mailArg="--email $EMAIL"
 fi
 
