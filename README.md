@@ -49,6 +49,11 @@ Mandatory, directory to serve the challenges
 ```
 -v /path/servername/.well-known/acme-challenge:/challenge/.well-known/acme-challenge
 ```
+### Test
+Hidden variable
+```
+-e TEST:0|FALSE|WhatEver|SERVERNAMES
+```
 
 # Why that ?
 I wanted to separate the certificate generation from my minimalist nginx container. One container for nginx, one container for php, one for sql, why would I install certbot inside my nginx container?
@@ -101,5 +106,8 @@ The `/.well-known/acme-challenge/` is some folder where my nginx specifically. N
 
 I use a "generic" file `server_ssl.conf` among my https servers. That's why my SSL_FLAG is that name. You can use `ssl_certificate_key` if you write it in each server file.
 
-
+# Tests
+There is a "hidden" (as not in the Dockerfile) env variable `TEST` which can be set to whatever you like to generate `--test-cert` (or staging) certificates.
+To prevent errors, 0 or FALSE will do reals certificates.
+To force the use of SERVERNAMES variable in tests, set TEST to SERVERNAMES (I don't think that's needed for real environment)
 
