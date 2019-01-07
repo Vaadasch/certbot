@@ -1,9 +1,14 @@
 # TL;DR
 ### Variables
+
 Optionnal :
+
 `-e EMAIL=exemple@domain.com`
+
 Mandatory only if using sitesconf, user readableness string
+
 `-e INSTANCE=Exemple`
+
 Mandatory. periodicity of check, or at start
 `-e PERIODICITY=15min|hourly|daily|...|SPAWN`
 List of the servernames, Mandatory only if sitesconf not mounted or empty
