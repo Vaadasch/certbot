@@ -26,7 +26,7 @@ directory where you have your servernames config files, 1 file per servername, d
 `-v /sites-configuartions:/sitesconf:ro`
 
 Mandatory, directory to serve the challenges<br>
-`-v /path/servername/.well-known/acme-challenge:/challenge/.well-known/acme-challenge`
+`-v /path/servername/.well-known/acme-challenge:/challenge`
 ### Test
 Hidden variable<br>
 `-e TEST=0|FALSE|WhatEver|SERVERNAMES`
@@ -92,7 +92,7 @@ So the symlink usage of sites-available/sites-enabled will not work (or maybe it
 I do not have this tested on apache, only nginx. But contributions are welcome.
 
 # What do I do
-The `/.well-known/acme-challenge/` is some folder where my nginx specifically. No need of the binded directory to be named .well-known/acme-challenge. It juste need to be SERVED by that name.
+The `/.well-known/acme-challenge/` is some URL my nginx specifically serve from another directory. No need of this binded directory to be named .well-known/acme-challenge. It juste need to be SERVED by that name.
 
 I use a "generic" file `server_ssl.conf` among my https servers. That's why my SSL_FLAG is that name. You can use `ssl_certificate_key` if you write it in each server file.
 
