@@ -3,7 +3,8 @@
 
 Optionnal : <br>
 ```
--e EMAIL=exemple@domain.com```
+-e EMAIL=exemple@domain.com
+```
 
 Mandatory only if using sitesconf, user readableness string<br>
 ```-e INSTANCE=Exemple```
