@@ -35,7 +35,7 @@ if [ ! -z "$TEST" ] ; then
 fi
 
 # Getting the certs
-certbot certonly -n --agree-tos $TEST $mailArg --cert-name $INSTANCE --webroot -w /challenge -d $SERVERNAMES
+certbot certonly -n --agree-tos $TEST $mailArg --cert-name $INSTANCE --webroot -w /working-challenge -d $SERVERNAMES
 
 # Copy it safely in the /certs directory
 python /wrap/moveCerts.py
