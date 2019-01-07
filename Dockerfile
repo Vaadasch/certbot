@@ -14,12 +14,14 @@ ENV SERVER nginx
 
 VOLUME /certs
 VOLUME /sitesconf
-VOLUME /challenges/.well-known/acme-challenge
+VOLUME /challenge
 
 WORKDIR /opt/certbot
 
 RUN apk update && apk --no-cache upgrade && \
-	apk add --no-cache certbot 
+	apk add --no-cache certbot && \
+	mkdir -p /working-challenge/.well-known && \
+	ln -s /challenge /working-challenge/.well-known/acme-challenge
 
 COPY wrap /wrap
 
