@@ -2,31 +2,29 @@
 ### Variables
 
 Optionnal : <br>
-```
--e EMAIL=exemple@domain.com
-```
+`-e EMAIL=exemple@domain.com`
 
 Mandatory only if using sitesconf, user readableness string<br>
-```-e INSTANCE=Exemple```
+`-e INSTANCE=Exemple`
 
-Mandatory. periodicity of check, or at start
+Mandatory. periodicity of check, or at start<br>
 `-e PERIODICITY=15min|hourly|daily|...|SPAWN`
-List of the servernames, Mandatory only if sitesconf not mounted or empty
+List of the servernames, Mandatory only if sitesconf not mounted or empty<br>
 `-e SERVERNAMES=exemple.domain.com,exemple2.domain.com`
-Mandatory only if using sitesconf, keyword to select the ssl protected vhosts
+Mandatory only if using sitesconf, keyword to select the ssl protected vhosts<br>
 `-e SSL_FLAG=server_ssl.conf`
-Mandatory only if using sitesconf, how to find servername in configuration files
+Mandatory only if using sitesconf, how to find servername in configuration files<br>
 `-e SERVER=apache|nginx`
 ### Volumes
-Directory where the new certificates are copied. Optionnal, but what the point otherwise?
-```-v /asyouwant/certs:/certs```
-directory where you have your servernames config files, 1 file per servername, do not symlink
-```-v /sites-configuartions:/sitesconf:ro```
-Mandatory, directory to serve the challenges
-```-v /path/servername/.well-known/acme-challenge:/challenge/.well-known/acme-challenge```
+Directory where the new certificates are copied. Optionnal, but what the point otherwise?<br>
+`-v /asyouwant/certs:/certs`
+directory where you have your servernames config files, 1 file per servername, do not symlink<br>
+`-v /sites-configuartions:/sitesconf:ro`
+Mandatory, directory to serve the challenges<br>
+`-v /path/servername/.well-known/acme-challenge:/challenge/.well-known/acme-challenge`
 ### Test
-Hidden variable
-```-e TEST=0|FALSE|WhatEver|SERVERNAMES```
+Hidden variable<br>
+`-e TEST=0|FALSE|WhatEver|SERVERNAMES`
 
 # certbot
 
