@@ -46,7 +46,7 @@ Mandatory, directory to serve the challenges. Need to be served as http(s?)://ex
 -v /myDir/forLE/validation:/challenge`
 ```
 ### Test
-Test variable
+Test variable for staging
 ```
 -e TEST=0|FALSE|WhatEver|SERVERNAMES`
 ```
