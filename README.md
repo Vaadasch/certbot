@@ -1,7 +1,7 @@
 # TL;DR
 ### Variables
 
-Optionnal :
+Optionnal : \
 
 `-e EMAIL=exemple@domain.com`
 
