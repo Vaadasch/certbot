@@ -20,7 +20,10 @@ if [ ! -d "/sitesconf" -o -z "$(ls -A /sitesconf)" ]; then
 	[ -z "$INSTANCE" ] && INSTANCE=$( echo $SERVERNAMES | awk -F ',' '{print $1}')
 
 else  # We use the configurations files to find the servernames
-	SERVERNAMES=$(python /wrap/getSites.py)
+	# Only if we dont want to use the SERVERNAMES for tests
+	if [ -z "$TEST" -o "$TEST" != "SERVERNAMES" ] ; then
+		SERVERNAMES=$(python /wrap/getSites.py)
+	fi
 fi
 
 # If TEST is set, we use --test-cert. Only if it's not set to 0 or FALSE
