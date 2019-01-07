@@ -20,6 +20,13 @@ else
 	SERVERNAMES=$(python /wrap/getSites.py)
 fi
 
-certbot certonly -n --agree-tos $mailArg --cert-name $INSTANCE --webroot -w /challenge -d $SERVERNAMES
+if [ ! -z "$TEST" ] ; then
+	if [ "$TEST" = "0" -o "$TEST" = "FALSE" ] ; then TEST=""
+	else 
+		TEST="--test-cert"
+	fi
+fi
+
+certbot certonly -n --agree-tos $TEST $mailArg --cert-name $INSTANCE --webroot -w /challenge -d $SERVERNAMES
 
 python /wrap/moveCerts.py
