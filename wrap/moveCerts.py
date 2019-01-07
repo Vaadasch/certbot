@@ -13,7 +13,7 @@ newfiletime = datetime.fromtimestamp(os.path.getmtime(certLEDir+'/fullchain.pem'
 if os.path.isfile(certDir+'/fullchain.pem') :
 	oldfiletime = datetime.fromtimestamp(os.path.getmtime(certDir+'/fullchain.pem'))
 else :
-	oldfiletime = 0
+	oldfiletime = datetime.datetime(1988,7,5)
 
 if oldfiletime > two_days_ago:
 	print("Certificats deja copies")
