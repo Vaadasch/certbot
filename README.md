@@ -111,6 +111,8 @@ There is a "hidden" (as not in the Dockerfile) env variable `TEST` which can be 
 To prevent errors, 0 or FALSE will do reals certificates.
 To force the use of SERVERNAMES variable in tests, set TEST to SERVERNAMES (I don't think that's needed for real environment)
 
+Oh, last thing. If you set periodicity and need to see immediatly what's what, just execute once the /wrap/script.sh.
+
 # Exemples
 ### Minimalist 
 ```
