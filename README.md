@@ -25,7 +25,8 @@ Directory where the new certificates are copied. Optionnal, but what the point o
 directory where you have your servernames config files, 1 file per servername, do not symlink<br>
 `-v /sites-configuartions:/sitesconf:ro`
 
-Mandatory, directory to serve the challenges. <br>Need to be served as http(s?)://ex.dom.com/.well-known/acme-challenge<br>
+Mandatory, directory to serve the challenges. <br>
+Need to be served as http(s?)://ex.dom.com/.well-known/acme-challenge<br>
 `-v /myDir/forLE/validation:/challenge`
 ### Test
 Hidden variable<br>
