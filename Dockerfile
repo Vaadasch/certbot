@@ -5,12 +5,12 @@ Description="Docker Let's Encrypt Certbot Container for automated \
 Webroot certificates generation, base on Nginx conf files" \
 Version="1"
 
-ENV EMAIL mail@example.com
-ENV INSTANCE Exemple
-ENV SERVERNAMES exemple.domain.com,exemple2.domain.com
+ENV EMAIL 
+ENV INSTANCE 
+ENV SERVERNAMES 
 ENV PERIODICITY daily
-ENV SSL_FLAG server_ssl.conf
-ENV SERVER nginx
+ENV SSL_FLAG 
+ENV SERVER 
 
 VOLUME /certs
 VOLUME /sitesconf
