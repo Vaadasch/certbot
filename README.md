@@ -14,27 +14,27 @@ If you need to generate certificates for more servernames than one container can
 ### Variables
 Optionnal :
 ```
--e mail:exemple@domain.com
+-e EMAIL=exemple@domain.com
 ```
 Mandatory only if using sitesconf, user readableness string
 ```
--e INSTANCE:Exemple
+-e INSTANCE=Exemple
 ```
 Mandatory. periodicity of check, or at start
 ```
--e PERIODICITY:15min|hourly|daily|...|SPAWN
+-e PERIODICITY=15min|hourly|daily|...|SPAWN
 ```
 List of the servernames, Mandatory only if sitesconf not mounted or empty
 ```
--e SERVERNAMES:exemple.domain.com,exemple2.domain.com
+-e SERVERNAMES=exemple.domain.com,exemple2.domain.com
 ```
 Mandatory only if using sitesconf, keyword to select the ssl protected vhosts
 ```
--e SSL_FLAG:server_ssl.conf
+-e SSL_FLAG=server_ssl.conf
 ```
 Mandatory only if using sitesconf, how to find servername in configuration files
 ```
--e SERVER:apache|nginx
+-e SERVER=apache|nginx
 ```
 ### Volumes
 Directory where the new certificates are copied. Optionnal, but what the point otherwise?
@@ -52,7 +52,7 @@ Mandatory, directory to serve the challenges
 ### Test
 Hidden variable
 ```
--e TEST:0|FALSE|WhatEver|SERVERNAMES
+-e TEST=0|FALSE|WhatEver|SERVERNAMES
 ```
 
 # Why that ?
@@ -111,3 +111,23 @@ There is a "hidden" (as not in the Dockerfile) env variable `TEST` which can be 
 To prevent errors, 0 or FALSE will do reals certificates.
 To force the use of SERVERNAMES variable in tests, set TEST to SERVERNAMES (I don't think that's needed for real environment)
 
+# Exemples
+### Minimalist 
+```
+docker run 	-e SERVERNAMES=exemple.domain.com \
+		-e PERIODICITY=SPAWN 	\
+		-v /MyCerts:/certs 	\
+		-v /myDir/forLE/validation:/challenge  \
+		vaadasch/certbot
+```
+### Full nginx
+```
+docker run	-e EMAIL=exemple@domain.com \
+		-e INSTANCE=Exemple \
+		-e PERIODICITY=daily \
+		-e SSL_FLAG=server_ssl.conf \
+		-v /MyCerts:/certs \
+		-v /myNginx/sites:/sitesconf:ro	\
+		-v /myDir/forLE/validation:/challenge/.well-known/acme-challenge \
+		vaadasch/certbot		
+```
