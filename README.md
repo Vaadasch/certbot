@@ -2,11 +2,10 @@
 ### Variables
 
 Optionnal : <br>
-`-e EMAIL=exemple@domain.com`
+```-e EMAIL=exemple@domain.com```
 
-Mandatory only if using sitesconf, user readableness string
-
-`-e INSTANCE=Exemple`
+Mandatory only if using sitesconf, user readableness string<br>
+```-e INSTANCE=Exemple```
 
 Mandatory. periodicity of check, or at start
 `-e PERIODICITY=15min|hourly|daily|...|SPAWN`
