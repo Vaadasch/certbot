@@ -16,36 +16,37 @@ Mandatory. periodicity of check, or at start
 -e PERIODICITY=15min|hourly|daily|...|SPAWN
 ```
 
-List of the servernames, Mandatory only if sitesconf not mounted or empty<br>
+List of the servernames, Mandatory only if sitesconf not mounted or empty
 ```
 -e SERVERNAMES=exemple.domain.com,exemple2.domain.com
 ```
 
-Mandatory only if using sitesconf, keyword to select the ssl protected vhosts<br>
+Mandatory only if using sitesconf, keyword to select the ssl protected vhosts
 ```
 -e SSL_FLAG=server_ssl.conf
 ```
 
-Mandatory only if using sitesconf, how to find servername in configuration files<br>
+Mandatory only if using sitesconf, how to find servername in configuration files
 ```
 -e SERVER=apache|nginx`
 ```
 ### Volumes
-Directory where the new certificates are copied. Optionnal, but what the point otherwise?<br>
+Directory where the new certificates are copied. Optionnal, but what the point otherwise?
 ```
 -v /asyouwant/certs:/certs`
 ```
 
-directory where you have your servernames config files, 1 file per servername, do not symlink<br>
-`-v /sites-configuartions:/sitesconf:ro`
+directory where you have your servernames config files, 1 file per servername, do not symlink
+```
+-v /sites-configuartions:/sitesconf:ro
+```
 
-Mandatory, directory to serve the challenges. <br>
-Need to be served as http(s?)://ex.dom.com/.well-known/acme-challenge<br>
+Mandatory, directory to serve the challenges. Need to be served as http(s?)://ex.dom.com/.well-known/acme-challenge
 ```
 -v /myDir/forLE/validation:/challenge`
 ```
 ### Test
-Hidden variable<br>
+Test variable
 ```
 -e TEST=0|FALSE|WhatEver|SERVERNAMES`
 ```
