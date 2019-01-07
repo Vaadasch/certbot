@@ -1,15 +1,3 @@
-# certbot
-
-This container aim to generate certificates with Let's Encrypt with easy deployment through docker structures
-
-The generated certificate will be copied in the `/certs` dir.
-If previous certificates files are present in this dir, it create a new directory `YYYY.MM.dd` to backup these files.
-
-The recuperation of these certificates files is at your conveinence. 
-IE mounting `/certs` in a volume or a bind
-
-If you need to generate certificates for more servernames than one container can support, make more containers from this image !
-
 # TL;DR
 ### Variables
 Optionnal :
@@ -54,6 +42,20 @@ Hidden variable
 ```
 -e TEST=0|FALSE|WhatEver|SERVERNAMES
 ```
+
+# certbot
+
+This container aim to generate certificates with Let's Encrypt with easy deployment through docker structures
+
+The generated certificate will be copied in the `/certs` dir.
+If previous certificates files are present in this dir, it create a new directory `YYYY.MM.dd` to backup these files.
+
+The recuperation of these certificates files is at your conveinence. 
+IE mounting `/certs` in a volume or a bind
+
+If you need to generate certificates for more servernames than one container can support, make more containers from this image !
+
+
 
 # Why that ?
 I wanted to separate the certificate generation from my minimalist nginx container. One container for nginx, one container for php, one for sql, why would I install certbot inside my nginx container?
