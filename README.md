@@ -1,5 +1,5 @@
 # TL;DR
-** Don't forget to enable TTY ! **
+**Don't forget to enable TTY !**
 ```
 --tty
 ``` 
