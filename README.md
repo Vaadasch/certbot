@@ -1,9 +1,8 @@
 # TL;DR
-
-**Don't forget to enable TTY !!**
+** Don't forget to enable TTY ! **
 ```
--t
-```
+--tty
+``` 
 
 ### Variables
 
@@ -80,8 +79,7 @@ I know, it's silly.
  
 # What's needed
 
-The directory `/challenge/.well-known/acme-challenge` need to be binded for it need to be served by your webserver at 
-http(s?)://example.domain.com/.well-known/acme-challenge/
+The directory `/challenge` need to be binded for it need to be served by your webserver at http(s?)://example.domain.com/.well-known/acme-challenge/
 Each of your sites need to serve this directory.
 
 Either the following need to be set (more description below): 
@@ -117,7 +115,9 @@ So the symlink usage of sites-available/sites-enabled will not work (or maybe it
 I do not have this tested on apache, only nginx. But contributions are welcome.
 
 # What do I do
-The `/.well-known/acme-challenge/` is some URL my nginx specifically serve from another directory. No need of this binded directory to be named .well-known/acme-challenge. It juste need to be SERVED by that name.
+The `/myDir/forLE/validation` need to be served by your webserver with the address  `http(s?)://exemple.domain.com/.well-known/acme-challenge/`.
+You can simply bind your name your /var/www/html/.well-known/acme-challenge/ directory or use some tweak.
+Each of your sites need to serve this directory.
 
 I use a "generic" file `server_ssl.conf` among my https servers. That's why my SSL_FLAG is that name. You can use `ssl_certificate_key` if you write it in each server file.
 
@@ -146,7 +146,7 @@ docker run	-e EMAIL=exemple@domain.com \
 		-e SSL_FLAG=server_ssl.conf \
 		-v /MyCerts:/certs \
 		-v /myNginx/sites:/sitesconf:ro	\
-		-v /myDir/forLE/validation:/challenge/.well-known/acme-challenge \
+		-v /myDir/forLE/validation:/challenge \
 		--tty \
 		vaadasch/certbot		
 ```
