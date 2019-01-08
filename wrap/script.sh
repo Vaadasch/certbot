@@ -17,7 +17,7 @@ if [ ! -d "/sitesconf" -o -z "$(ls -A /sitesconf)" ]; then
 		exit 1; 
 	fi
 	# If instance variable is not set, we select the first servername of string SERVERNAME
-	[ -z "$INSTANCE" ] && INSTANCE=$( echo $SERVERNAMES | awk -F ',' '{print $1}')
+	[ -z "$INSTANCE" ] && export INSTANCE=$( echo $SERVERNAMES | awk -F ',' '{print $1}')
 
 else  # We use the configurations files to find the servernames
 	# Only if we dont want to use the SERVERNAMES for tests
