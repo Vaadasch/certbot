@@ -1,4 +1,7 @@
 # TL;DR
+
+**Don't forget to enable TTY !!**
+
 ### Variables
 
 Optionnal : 
