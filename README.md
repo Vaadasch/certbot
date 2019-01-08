@@ -1,6 +1,9 @@
 # TL;DR
 
 **Don't forget to enable TTY !!**
+```
+-t
+```
 
 ### Variables
 
@@ -132,6 +135,7 @@ docker run 	-e SERVERNAMES=exemple.domain.com \
 		-e PERIODICITY=SPAWN 	\
 		-v /MyCerts:/certs 	\
 		-v /myDir/forLE/validation:/challenge  \
+		--tty \
 		vaadasch/certbot
 ```
 ### Full nginx
@@ -143,5 +147,6 @@ docker run	-e EMAIL=exemple@domain.com \
 		-v /MyCerts:/certs \
 		-v /myNginx/sites:/sitesconf:ro	\
 		-v /myDir/forLE/validation:/challenge/.well-known/acme-challenge \
+		--tty \
 		vaadasch/certbot		
 ```
